@@ -901,12 +901,12 @@ body {
     }
 }
 
-/* --- ASSETS SECTION --- */
-.assets-section-container {
+/* --- LINGUAGGIO VISIVO --- */
+.assets-container {
     padding: var(--spacing-64) var(--spacing-32);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-40);
+    gap: var(--spacing-64);
 }
 
 .assets-header {
@@ -919,52 +919,143 @@ body {
     gap: 16px;
 }
 
-.assets-grid-main {
+.assets-cards-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-32);
-    background-color: #F2F4F3;
-    padding: 40px;
-    border-radius: 8px;
-    align-items: center;
-}
-
-.assets-text-box {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.palette-colors-container {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.palette-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.color-sample {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 1px solid var(--color-border-muted);
-}
-
-.color-code {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--color-muted);
 }
 
 @media (min-width: 900px) {
-    .assets-grid-main {
-        grid-template-columns: 1fr 1fr;
+    .assets-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-32);
     }
+}
+
+.assets-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Preview box */
+.assets-card-preview {
+    background-color: #F4F6F5;
+    border-radius: 4px;
+    height: 300px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Tipografia */
+.font-preview-box {
+    gap: 16px;
+}
+
+.font-specimen {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.font-label {
+    font-size: 11px;
+    color: #828A84;
+}
+
+.font-name {
+    font-size: 18px;
+    color: var(--color-black);
+    font-weight: 600;
+}
+
+.font-title-specimen {
+    font-weight: 900;
+}
+
+.font-num-specimen {
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+.font-body-specimen {
+    font-weight: 400;
+}
+
+/* Palette Colore */
+.color-preview-box {
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+}
+
+.color-swatches {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    justify-content: center;
+}
+
+.swatch {
+    width: 70px;
+    height: 70px;
+    border-radius: 2px;
+}
+
+.color-swatches-labels {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 240px;
+    font-size: 11px;
+    color: #57605A;
+}
+
+.color-box-subtitle {
+    font-size: 11px;
+    color: #828A84;
+    margin-top: 12px;
+}
+
+/* Immagine Skater */
+.image-preview-box {
+    padding: 0;
+}
+
+.image-preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Testi descrittivi inferiori */
+.assets-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-eyebrow {
+    font-size: 12px;
+    color: #828A84;
+}
+
+.assets-card-content h3 {
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: var(--color-black);
+}
+
+.assets-card-content p {
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 /* --- BREAKOUT TABS / ACCORDION MODULE --- */
