@@ -110,9 +110,9 @@
             <h3 class="sidebar-title">In questa storia</h3>
             <ul class="sidebar-nav">
               <li><a href="#concept">Concept</a></li>
-              <li><a href="#sitemap">Sitemap</a></li>
-              <li><a href="#assets">Assets</a></li>
-              <li><a href="#highlights">Highlights</a></li>
+              <li><a href="#struttura">Struttura</a></li>
+              <li><a href="#interazioni">Interazioni</a></li>
+              <li><a href="#visual">Visual</a></li>
               <li><a href="#case-study">Case Study</a></li>
             </ul>
           </div>
@@ -164,7 +164,7 @@
 
     
     <!-- SEZIONE SITEMAP / STRUTTURA -->
-<section id="sitemap" class="section theme-light border-top">
+<section id="struttura" class="section theme-light border-top">
   <div class="container border-inline sitemap-section-container">
     
     <!-- header centrato -->
@@ -274,7 +274,7 @@
 
 
     <!-- SEZIONE LINGUAGGIO VISIVO -->
-<section id="assets" class="section theme-light border-top">
+<section id="visual" class="section theme-light border-top">
   <div class="container border-inline assets-container">
     
     <!-- Intestazione centrata -->
@@ -361,6 +361,53 @@
 
   </div>
 </section>
+
+<!-- SEZIONE PROTOTIPI / PORTARE LE SCELTE SU DESKTOP E MOBILE -->
+    <section id="prototipi" class="section theme-light border-top">
+      <div class="container border-inline prototipi-container">
+        
+        <!-- Intestazione centrata -->
+        <div class="prototipi-header">
+          <p class="eyebrow">
+            PROTOTIPI
+            <svg class="eyebrow-cursor" width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="8" height="10" fill="var(--color-cursor)" />
+            </svg>
+          </p>
+          <h2 class="heading heading-size-2-regular">Portare le scelte su desktop e mobile</h2>
+          <p class="text-big color-muted">
+            La presentazione raccoglie due prototipi. Le schermate permettono di osservare come cambiano proporzioni, immagini e disposizione dei contenuti quando lo spazio si restringe.
+          </p>
+        </div>
+
+        <!-- Blocco 1: Desktop -->
+        <div class="prototipi-row">
+          <div class="prototipi-block">
+            <h3 class="heading-size-3">Desktop: alternare panoramica e dettaglio</h3>
+            <p class="body color-muted">
+              Nel formato ampio affianco fotografie, titoli e spiegazioni. Le immagini occupano porzioni diverse della pagina, mentre le linee rosse accompagnano il passaggio tra i contenuti. Questo estratto mostra la sezione sulla storia del modello.
+            </p>
+          </div>
+          <div class="prototipi-img-card">
+            <img src="assets/images/poster.png" alt="Prototipo desktop: The story of the Nike Dunk" />
+          </div>
+        </div>
+
+        <!-- Blocco 2: Mobile -->
+        <div class="prototipi-row">
+          <div class="prototipi-block">
+            <h3 class="heading-size-3">Mobile: ricomporre in verticale</h3>
+            <p class="body color-muted">
+              Nel formato stretto mantengo la sequenza della pagina e ricompongo immagini e testi in verticale. L'estratto sui materiali mostra come il dettaglio della scarpa e la descrizione trovano posto nel formato mobile.
+            </p>
+          </div>
+          <div class="prototipi-img-card">
+            <img src="assets/images/suole.png" alt="Prototipo mobile: Materiali e Grip con dettaglio suole" />
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- 5. SEZIONE CASE STUDY -->
     <section id="case-study" class="section case-study theme-light border-top">
@@ -483,32 +530,30 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="site-footer theme-light border-top">
+  <footer class="site-footer border-top">
     <div class="container border-inline footer-container">
-      <div class="footer-links">
+      <div class="footer-left">
         <a href="https://github.com" class="footer-logo-link" aria-label="GitHub Home">
-          <img src="assets/images/github-mark.svg" width="20" height="20" alt="" class="footer-github-mark" />
+          <img src="assets/images/github-mark.svg" width="24" height="24" alt="" class="footer-github-mark" />
         </a>
-        <nav class="footer-nav" aria-label="Link utili footer">
-          <a href="#">Terms</a>
-          <a href="#">Privacy</a>
-          <a href="#">Security</a>
-          <a href="#">Status</a>
-          <a href="#">Docs</a>
-          <a href="#">Contact GitHub</a>
-          <a href="#">Pricing</a>
-          <a href="#">API</a>
-          <a href="#">Training</a>
-          <a href="#">Blog</a>
-          <a href="#">About</a>
-        </nav>
       </div>
 
-      <div class="footer-back-to-top">
-        <a href="#top" class="back-to-top-link">
-          Back to top <span aria-hidden="true">&uarr;</span>
+      <div class="footer-right">
+        <nav class="footer-nav" aria-label="Link utili footer">
+          <a href="https://github.com/education" target="_blank" rel="noopener">GitHub Education</a>
+          <a href="#" target="_blank" rel="noopener">File Figma</a>
+          <a href="#top" class="footer-back-to-top-text">Torna all'inizio</a>
+        </nav>
+        <a href="#top" class="footer-top-button" aria-label="Torna all'inizio">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.22 7.22L7.22 3.22C7.41529 3.02471 7.67843 2.91925 7.953 2.91925C8.22757 2.91925 8.49071 3.02471 8.686 3.22L12.686 7.22C12.8751 7.41624 12.9774 7.67756 12.9729 7.94825C12.9684 8.21894 12.8574 8.47672 12.6656 8.66856C12.4737 8.8604 12.2159 8.97141 11.9452 8.9759C11.6745 8.98038 11.4132 8.87812 11.217 8.689L9 6.474V13C9 13.2652 8.89464 13.5196 8.70711 13.7071C8.51957 13.8946 8.26522 14 8 14C7.73478 14 7.48043 13.8946 7.29289 13.7071C7.10536 13.5196 7 13.2652 7 13V6.474L4.783 8.689C4.58676 8.87812 4.32544 8.98038 4.05475 8.9759C3.78406 8.97141 3.52628 8.8604 3.33444 8.66856C3.1426 8.47672 3.03159 8.21894 3.02711 7.94825C3.02262 7.67756 3.12488 7.41624 3.314 7.22H3.22Z" fill="currentColor"/>
+          </svg>
         </a>
       </div>
+    </div>
+    
+    <div class="footer-bottom container border-inline">
+      <p>© 2026 Andrea Barzaghi &middot; Case study UX/UI</p>
     </div>
   </footer>
 </body>

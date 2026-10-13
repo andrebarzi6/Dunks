@@ -82,42 +82,34 @@ desktopMedia.addEventListener('change', function () {
 // ==========================================
 // 2. BREAKOUT TABS / ACCORDION MODULE
 // ==========================================
-
-// Gestione della tabella di contenuti "breakdownTabs": cambia il pannello attivo,
-// aggiorna l'immagine principale e imposta correttamente gli attributi ARIA.
 document.addEventListener('DOMContentLoaded', () => {
-  const tabs = document.querySelectorAll('.breakdownTabs-trigger');
-  const items = document.querySelectorAll('.breakdownTabs-item');
-  const mainImage = document.getElementById('breakdown-image');
+  const tabs = document.querySelectorAll('.case-study .tab');
+  const images = document.querySelectorAll('.case-study .tabs-image');
 
   if (!tabs.length) return;
 
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const parentItem = tab.closest('.breakdownTabs-item');
-      const targetPanelId = tab.getAttribute('aria-controls');
-      const targetPanel = document.getElementById(targetPanelId);
-      const newImageSrc = tab.getAttribute('data-image');
+  tabs.forEach((tab, index) => {
+    const button = tab.querySelector('.tab-button');
+    if (!button) return;
 
-      // Aggiorna l'immagine visualizzata quando la tab cambia.
-      if (mainImage && newImageSrc) {
-        mainImage.setAttribute('src', newImageSrc);
+    button.addEventListener('click', () => {
+      const isMobile = window.innerWidth < 900;
+      const isAlreadySelected = tab.classList.contains('is-selected');
+
+      // Su mobile, se clicchi sulla voce già aperta, la richiudi (accordion toggle)
+      if (isMobile && isAlreadySelected) {
+        tab.classList.remove('is-selected');
+        return;
       }
 
-      // Rimuove lo stato attivo da tutte le voci e chiude i pannelli associati.
-      items.forEach((item) => item.classList.remove('is-active'));
-      tabs.forEach((t) => {
-        t.setAttribute('aria-expanded', 'false');
-        const pId = t.getAttribute('aria-controls');
-        const pEl = document.getElementById(pId);
-        if (pEl) pEl.setAttribute('hidden', '');
-      });
+      // Comportamento standard: chiude/disattiva tutte le tab e nasconde le immagini
+      tabs.forEach((t) => t.classList.remove('is-selected'));
+      images.forEach((img) => img.classList.remove('is-visible'));
 
-      // Attiva la scheda cliccata e mostra il suo pannello associato.
-      if (parentItem) parentItem.classList.add('is-active');
-      tab.setAttribute('aria-expanded', 'true');
-      if (targetPanel) {
-        targetPanel.removeAttribute('hidden');
+      // Attiva la tab cliccata e mostra l'immagine corrispondente
+      tab.classList.add('is-selected');
+      if (images[index]) {
+        images[index].classList.add('is-visible');
       }
     });
   });
@@ -126,8 +118,16 @@ document.addEventListener('DOMContentLoaded', () => {
 // Gestione delle tab secondarie all'interno dei case study: mostra solo la tab e
 // l'immagine corrispondenti alla selezione corrente.
 document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.case-study .tabs-container');
   const tabs = document.querySelectorAll('.case-study .tab');
   const images = document.querySelectorAll('.case-study .tabs-image');
+
+  if (!container || !tabs.length) return;
+
+  // Segnala al CSS che JavaScript è attivo: solo da ora sotto i 1000px
+  // i testi si chiudono e compaiono le frecce dell'accordion.
+  // Senza JavaScript questa classe manca e i tre testi restano leggibili.
+  container.classList.add('tabs-ready');
 
   tabs.forEach((tab, index) => {
     const button = tab.querySelector('.tab-button');
@@ -135,11 +135,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     button.addEventListener('click', () => {
       // Disattiva tutte le tab e nascondi tutte le immagini.
-      tabs.forEach((t) => t.classList.remove('is-selected'));
+      tabs.forEach((t) => {
+        t.classList.remove('is-selected');
+        const b = t.querySelector('.tab-button');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
       images.forEach((img) => img.classList.remove('is-visible'));
 
       // Attiva la tab cliccata e mostra la relativa immagine.
       tab.classList.add('is-selected');
+      button.setAttribute('aria-expanded', 'true');
       if (images[index]) {
         images[index].classList.add('is-visible');
       }
