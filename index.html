@@ -362,7 +362,7 @@
   </div>
 </section>
 
-<!-- SEZIONE PROTOTIPI / PORTARE LE SCELTE SU DESKTOP E MOBILE -->
+<!-- SEZIONE PROTOTIPI -->
     <section id="prototipi" class="section theme-light border-top">
       <div class="container border-inline prototipi-container">
         
@@ -380,30 +380,34 @@
           </p>
         </div>
 
-        <!-- Blocco 1: Desktop -->
-        <div class="prototipi-row">
-          <div class="prototipi-block">
-            <h3 class="heading-size-3">Desktop: alternare panoramica e dettaglio</h3>
-            <p class="body color-muted">
-              Nel formato ampio affianco fotografie, titoli e spiegazioni. Le immagini occupano porzioni diverse della pagina, mentre le linee rosse accompagnano il passaggio tra i contenuti. Questo estratto mostra la sezione sulla storia del modello.
-            </p>
-          </div>
-          <div class="prototipi-img-card">
-            <img src="assets/images/poster.png" alt="Prototipo desktop: The story of the Nike Dunk" />
-          </div>
-        </div>
+        <!-- Layout a due colonne: Testi a sinistra, Blocco unico con tutte le immagini a destra -->
+        <div class="prototipi-grid">
+          
+          <!-- Colonna Sinistra: I testi descrittivi in colonna -->
+          <div class="prototipi-texts-col">
+            <div class="prototipi-block">
+              <h3 class="heading-size-3">Desktop: alternare panoramica e dettaglio</h3>
+              <p class="body color-muted">
+                Nel formato ampio affianco fotografie, titoli e spiegazioni. Le immagini occupano porzioni diverse della pagina, mentre le linee rosse accompagnano il passaggio tra i contenuti. Questo estratto mostra la sezione sulla storia del modello.
+              </p>
+            </div>
 
-        <!-- Blocco 2: Mobile -->
-        <div class="prototipi-row">
-          <div class="prototipi-block">
-            <h3 class="heading-size-3">Mobile: ricomporre in verticale</h3>
-            <p class="body color-muted">
-              Nel formato stretto mantengo la sequenza della pagina e ricompongo immagini e testi in verticale. L'estratto sui materiali mostra come il dettaglio della scarpa e la descrizione trovano posto nel formato mobile.
-            </p>
+            <div class="prototipi-block">
+              <h3 class="heading-size-3">Mobile: ricomporre in verticale</h3>
+              <p class="body color-muted">
+                Nel formato stretto mantengo la sequenza della pagina e ricompongo immagini e testi in verticale. L'estratto sui materiali mostra come il dettaglio della scarpa e la descrizione trovano posto nel formato mobile.
+              </p>
+            </div>
           </div>
-          <div class="prototipi-img-card">
-            <img src="assets/images/suole.png" alt="Prototipo mobile: Materiali e Grip con dettaglio suole" />
+
+          <!-- Colonna Destra: Un unico grande box scuro che unisce le immagini -->
+          <div class="prototipi-images-col">
+            <div class="prototipi-img-card">
+              <img src="assets/images/poster.png" alt="Prototipo desktop: The story of the Nike Dunk" class="prototipi-img" />
+              <img src="assets/images/suole.png" alt="Prototipo mobile: Materiali e Grip" class="prototipi-img" />
+            </div>
           </div>
+
         </div>
 
       </div>

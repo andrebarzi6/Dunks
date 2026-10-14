@@ -640,7 +640,7 @@ body {
     padding: var(--spacing-64) var(--spacing-32);
     display: flex;
     flex-direction: column;
-    gap: 0px;
+    gap: var(--spacing-64);
 }
 
 .prototipi-header {
@@ -653,10 +653,16 @@ body {
     gap: 16px;
 }
 
+.prototipi-pairs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
 .prototipi-row {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
 }
 
 .prototipi-block {
@@ -666,45 +672,59 @@ body {
     justify-content: center;
 }
 
+/* Contenitore stile card scura con padding e larghezza massima controllata */
 .prototipi-img-card {
-    background-color: gray;
+    background-color: #0d110f;
     border: 1px solid var(--color-border-muted);
     border-radius: 8px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 24px;
-    width: 520px;
+    padding: 16px;
+    max-width: 480px; /* Limita la larghezza massima come nelle interazioni */
+    margin: 0 auto;   /* Centra la card se lo spazio è ampio */
+    width: 100%;
 }
 
-.prototipi-row:nth-child(2) .prototipi-img-card img {
+.prototipi-img-card img {
     width: 100%;
-    max-width: 520px; 
     height: auto;
+    border-radius: 4px;
     object-fit: contain;
 }
 
-
-.prototipi-row:nth-child(3) .prototipi-img-card img {
-    width: 100%;
-    max-width: 320px; 
-    height: auto;
-    object-fit: contain;
-}
-
-
+/* Griglia a due colonne da 1000px */
 @media (min-width: 1000px) {
     .prototipi-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-64);
         align-items: center;
     }
 
     .prototipi-row .prototipi-block {
         order: 1;
     }
+
     .prototipi-row .prototipi-img-card {
+        order: 2;
+        margin: 0; /* Rimuove il centering automatico su desktop affinché stia nella sua colonna */
+    }
+}
+
+/* Su mobile (sotto i 1000px): le immagini compaiono prima dei rispettivi testi */
+@media (max-width: 999px) {
+    .prototipi-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .prototipi-img-card {
+        order: 1;
+    }
+
+    .prototipi-block {
         order: 2;
     }
 }
@@ -1192,9 +1212,11 @@ body {
 
 /* --- NUOVO FOOTER --- */
 .site-footer {
-    background-color: #013030;
+    background-color: #0D110F;
     color: var(--color-muted);
     font-size: 14px;
+    border-top: 3px solid #5FED83;
+    position: relative;
 }
 
 .footer-container {
