@@ -7,8 +7,7 @@ const navigationButton = document.querySelector('.navigation-toggle');
 const navigationLabel = document.querySelector('.navigation-label');
 const navigationPanel = document.querySelector('.navigation-panel');
 
-// Controlla se il viewport è a dimensione desktop e se il browser supporta
-// la funzionalità popover nativa, necessaria per il menu mobile.
+
 const desktopMedia = window.matchMedia('(min-width: 63.25rem)');
 const supportsNavigation = 'popover' in HTMLElement.prototype &&
   CSS.supports('top', 'anchor(bottom)') &&
