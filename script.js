@@ -80,43 +80,8 @@ desktopMedia.addEventListener('change', function () {
 });
 
 // ==========================================
-// 2. BREAKOUT TABS / ACCORDION MODULE
+// 2. SCHEDE / ACCORDION DEL CASE STUDY
 // ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-  const tabs = document.querySelectorAll('.case-study .tab');
-  const images = document.querySelectorAll('.case-study .tabs-image');
-
-  if (!tabs.length) return;
-
-  tabs.forEach((tab, index) => {
-    const button = tab.querySelector('.tab-button');
-    if (!button) return;
-
-    button.addEventListener('click', () => {
-      const isMobile = window.innerWidth < 900;
-      const isAlreadySelected = tab.classList.contains('is-selected');
-
-      // Su mobile, se clicchi sulla voce già aperta, la richiudi (accordion toggle)
-      if (isMobile && isAlreadySelected) {
-        tab.classList.remove('is-selected');
-        return;
-      }
-
-      // Comportamento standard: chiude/disattiva tutte le tab e nasconde le immagini
-      tabs.forEach((t) => t.classList.remove('is-selected'));
-      images.forEach((img) => img.classList.remove('is-visible'));
-
-      // Attiva la tab cliccata e mostra l'immagine corrispondente
-      tab.classList.add('is-selected');
-      if (images[index]) {
-        images[index].classList.add('is-visible');
-      }
-    });
-  });
-});
-
-// Gestione delle tab secondarie all'interno dei case study: mostra solo la tab e
-// l'immagine corrispondenti alla selezione corrente.
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.case-study .tabs-container');
   const tabs = document.querySelectorAll('.case-study .tab');
@@ -124,30 +89,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!container || !tabs.length) return;
 
-  // Segnala al CSS che JavaScript è attivo: solo da ora sotto i 1000px
-  // i testi si chiudono e compaiono le frecce dell'accordion.
+  // Dice al CSS che JavaScript funziona: solo da ora sotto i 1000px i testi
+  // delle voci non scelte si chiudono e compaiono i triangoli.
   // Senza JavaScript questa classe manca e i tre testi restano leggibili.
   container.classList.add('tabs-ready');
+
+  // Sceglie la voce numero `selectedIndex` e aggiorna tutto il resto di conseguenza:
+  // classe della voce, aria-expanded del pulsante e immagine visibile.
+  function selectTab(selectedIndex) {
+    tabs.forEach((tab, index) => {
+      const isSelected = index === selectedIndex;
+      tab.classList.toggle('is-selected', isSelected);
+      tab.querySelector('.tab-button')?.setAttribute('aria-expanded', String(isSelected));
+      images[index]?.classList.toggle('is-visible', isSelected);
+    });
+  }
 
   tabs.forEach((tab, index) => {
     const button = tab.querySelector('.tab-button');
     if (!button) return;
-
-    button.addEventListener('click', () => {
-      // Disattiva tutte le tab e nascondi tutte le immagini.
-      tabs.forEach((t) => {
-        t.classList.remove('is-selected');
-        const b = t.querySelector('.tab-button');
-        if (b) b.setAttribute('aria-expanded', 'false');
-      });
-      images.forEach((img) => img.classList.remove('is-visible'));
-
-      // Attiva la tab cliccata e mostra la relativa immagine.
-      tab.classList.add('is-selected');
-      button.setAttribute('aria-expanded', 'true');
-      if (images[index]) {
-        images[index].classList.add('is-visible');
-      }
-    });
+    button.addEventListener('click', () => selectTab(index));
   });
+
+  // Stato iniziale: parte dalla voce che l'HTML segna come scelta.
+  const initialIndex = [...tabs].findIndex((tab) => tab.classList.contains('is-selected'));
+  selectTab(initialIndex === -1 ? 0 : initialIndex);
 });

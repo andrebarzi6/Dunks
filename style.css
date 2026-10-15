@@ -637,96 +637,36 @@ body {
 
 /* --- SEZIONE PROTOTIPI --- */
 .prototipi-container {
-    padding: var(--spacing-64) var(--spacing-32);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-64);
+  padding: 64px 0 0;
 }
 
 .prototipi-header {
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  max-width: calc(680px + 2 * var(--spacing-32));
+  margin: 0 auto;
+  padding: 0 var(--spacing-32) 64px;
 }
 
-.prototipi-pairs-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 64px;
+
+.prototipi-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F2F4F3;
+  padding: var(--spacing-40) var(--spacing-32);
 }
 
-.prototipi-row {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
 
-.prototipi-block {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    justify-content: center;
-}
-
-/* Contenitore stile card scura con padding e larghezza massima controllata */
-.prototipi-img-card {
-    background-color: #0d110f;
-    border: 1px solid var(--color-border-muted);
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-    max-width: 480px; /* Limita la larghezza massima come nelle interazioni */
-    margin: 0 auto;   /* Centra la card se lo spazio è ampio */
-    width: 100%;
-}
-
-.prototipi-img-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    object-fit: contain;
-}
-
-/* Griglia a due colonne da 1000px */
-@media (min-width: 1000px) {
-    .prototipi-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--spacing-64);
-        align-items: center;
-    }
-
-    .prototipi-row .prototipi-block {
-        order: 1;
-    }
-
-    .prototipi-row .prototipi-img-card {
-        order: 2;
-        margin: 0; /* Rimuove il centering automatico su desktop affinché stia nella sua colonna */
-    }
-}
-
-/* Su mobile (sotto i 1000px): le immagini compaiono prima dei rispettivi testi */
-@media (max-width: 999px) {
-    .prototipi-row {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .prototipi-img-card {
-        order: 1;
-    }
-
-    .prototipi-block {
-        order: 2;
-    }
+.prototipi-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover; /* Cambiato da contain a cover (o unset se preferisci l'altezza naturale) */
 }
 
 /* --- CASE STUDY HEADER & SIDEBAR ("IN QUESTA STORIA") --- */
@@ -866,7 +806,7 @@ body {
 
 /* --- SITEMAP / STRUTTURA SECTION --- */
 .sitemap-section-container {
-    padding: var(--spacing-64) var(--spacing-32);
+    padding: var(--spacing-64) 0 0;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-64);
@@ -874,7 +814,8 @@ body {
 
 .sitemap-header {
     text-align: center;
-    max-width: 680px;
+    max-width: calc(680px + 2 * var(--spacing-32));
+    padding: 0 var(--spacing-32);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -894,39 +835,11 @@ body {
     line-height: 1.6;
 }
 
-.sitemap-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-40);
-    align-items: start;
-}
-
-@media (min-width: 900px) {
-    .sitemap-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--spacing-64);
-    }
-}
-
-.sitemap-left-col {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    justify-content: center;
-    padding-top: 24px;
-}
-
 .heading-size-3 {
     font-size: 32px;
     line-height: 1.25;
     font-weight: 500;
     color: var(--color-black);
-}
-
-.sitemap-right-box {
-    background-color: #F2F4F3;
-    padding: 40px;
-    border-radius: 4px;
 }
 
 .sitemap-list {
@@ -954,7 +867,7 @@ body {
 
 /* --- INTERAZIONI SECTION --- */
 .interazioni-container {
-    padding: var(--spacing-64) var(--spacing-32);
+    padding: var(--spacing-64) 0 0;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-64);
@@ -962,7 +875,8 @@ body {
 
 .interazioni-header {
     text-align: center;
-    max-width: 680px;
+    max-width: calc(680px + 2 * var(--spacing-32));
+    padding: 0 var(--spacing-32);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -970,56 +884,55 @@ body {
     gap: 16px;
 }
 
-.interazioni-pairs-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 64px; 
+/* --- RIVER: blocco con testo e immagine/elenco --------------------------
+   Un solo componente, usato in Struttura e Interazioni.
+   Sotto i 1000px: una colonna, con immagine/elenco PRIMA del testo.
+   Da 1000px: due colonne, testo a sinistra e immagine/elenco a destra.
+   Per cambiare la proporzione delle colonne: --river-columns.            */
+.title-river {
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 500;
 }
 
-.interazioni-row {
-    display: flex;
-    flex-direction: column;
-    gap: 24px; 
+.river {
+    --river-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: var(--border-width) solid var(--color-border-muted);
 }
 
-.interazioni-block {
+.river-text {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-}
-
-.interazioni-img-card {
-    background-color: #0d110f;
-    border: 1px solid var(--color-border-muted);
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 16px;
-    max-width: 480px;
-    margin: 0 auto;
+    gap: 16px;
+    padding: var(--spacing-40) var(--spacing-32);
 }
 
-.interazioni-img-card img {
+.river-media {
+    order: -1; /* sotto 1000px l'immagine/elenco sta sopra il testo */
+}
+
+.river-media img {
+    display: block;
     width: 100%;
-    height: auto;
-    border-radius: 4px;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
 }
 
+.river-media-tint {
+    background-color: #F2F4F3;
+    padding: var(--spacing-40) var(--spacing-32);
+}
 
 @media (min-width: 1000px) {
-    .interazioni-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--spacing-64);
-        align-items: center;
+    .river {
+        grid-template-columns: var(--river-columns);
     }
 
-    
-    .interazioni-row:nth-child(2) .interazioni-img-card {
-        margin-top: -30px;
+    .river-media {
+        order: 0;
     }
 }
 
@@ -1328,41 +1241,59 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-24);
+    list-style: none;
 }
 
-@media (min-width: 900px) {
-    .tabs-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
+/* La linea sopra ogni voce è il bordo superiore della voce stessa */
 .tab {
+    position: relative; /* serve al pulsante "esteso" da 1000px */
     display: flex;
     flex-direction: column;
+    border-top: var(--border-width) solid #E4EBE6;
 }
 
+.tab.is-selected,
+.tab:hover {
+    border-top-color: var(--color-accent);
+}
+
+/* Un pulsante non eredita font e colore dalla pagina: li chiediamo noi */
 .tab-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    padding: 0;
-    width: 100%;
-}
-
-.tab-header {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-top: 12px;
+    width: 100%;
+    padding: 12px 0 0;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
 }
 
+.tab-button:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+.tab-icon {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.tab-title {
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+/* Senza JavaScript il triangolo non c'è e i tre testi si leggono */
 .accordion-arrow {
     display: none;
-}
-
-.tab.is-selected .line rect {
-    fill: var(--color-accent);
+    margin-left: auto;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
 }
 
 .text-tab {
@@ -1375,41 +1306,51 @@ body {
     line-height: 1.5;
 }
 
-/* --- BREAKOUT TABS: DESKTOP & ACCORDION MOBILE --- */
-
-/* 1. HOVER UNIVERSALE: L'hover colora la barra di verde su qualsiasi dispositivo */
-.case-study .tab:hover .line rect,
-.case-study .tab-button:hover .line rect {
-    fill: var(--color-accent);
+/* --- ACCORDION (sotto i 1000px) ---------------------------------------
+   Le regole valgono solo se lo script ha messo .tabs-ready sul contenitore. */
+.tabs-ready .accordion-arrow {
+    display: block;
 }
 
-/* 2. MOBILE: Comportamento Accordion (testi nascosti finché non vengono selezionati) */
-@media (max-width: 899px) {
-    .case-study .tab .text-tab {
-        display: none; /* Nasconde il testo di default su mobile */
-    }
-    
-    .case-study .tab.is-selected .text-tab {
-        display: block; /* Mostra il testo solo quando la voce è aperta/selezionata */
-    }
-
-    /* Gestione delle frecce dell'accordion su mobile */
-    .case-study .accordion-arrow {
-        display: inline-block;
-        transition: transform 0.2s ease;
-    }
-
-    .case-study .tab.is-selected .accordion-arrow {
-        transform: rotate(180deg); /* Capovolge la freccia se aperto */
-    }
+.tabs-ready .tab.is-selected .accordion-arrow {
+    transform: rotate(180deg);
 }
 
-/* 3. DESKTOP: Assicura che i testi siano sempre visibili e le frecce nascoste */
-@media (min-width: 900px) {
-    .case-study .accordion-arrow {
-        display: none !important;
+.tabs-ready .tab:not(.is-selected) .text-tab {
+    display: none;
+}
+
+/* --- SCHEDE (da 1000px) ------------------------------------------------ */
+@media (min-width: 1000px) {
+    .tabs-container {
+        grid-template-columns: repeat(3, 1fr);
     }
-    .case-study .tab .text-tab {
-        display: block !important;
+
+    .tabs-ready .accordion-arrow {
+        display: none;
+    }
+
+    .tabs-ready .tab:not(.is-selected) .text-tab {
+        display: block;
+    }
+
+    .tab:not(.is-selected) .tab-button {
+        color: var(--color-muted);
+    }
+
+    /* Il pulsante si estende su tutta la voce: il clic sul testo la sceglie */
+    .tab-button::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+    }
+
+    .tab-button:focus-visible {
+        outline: none;
+    }
+
+    .tab-button:focus-visible::after {
+        outline: 3px solid var(--color-focus);
+        outline-offset: 2px;
     }
 }
