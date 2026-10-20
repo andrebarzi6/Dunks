@@ -168,9 +168,20 @@ body {
     letter-spacing: 1px;
     color: var(--color-muted);
     display: flex;
+    flex-wrap: wrap; /* Permette all'anno di andare a capo quando lo spazio diminuisce */
     justify-content: center;
     align-items: center;
     gap: 0.42em;
+    text-align: center;
+}
+.eyebrow-year-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42em;
+    white-space: nowrap;
+}
+.hero-content .eyebrow-cursor rect {
+    fill: #5FED83 !important; /* Forza il colore verde lime acceso */
 }
 
 .eyebrow-cursor rect {
@@ -615,59 +626,132 @@ body {
 
 /* --- SUBTITLE / BIOGRAFIA --- */
 .subtitle {
-    padding: var(--spacing-24) 0;
+    padding: var(--spacing-24) var(--spacing-32);
     background-color: var(--color-black);
 }
 
 .biography-content {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
     font-size: 15px;
-    color: var(--color-muted);
-    flex-wrap: wrap;
+    color: var(--color-white);
 }
 
 .biography-content .name {
-    color: var(--color-white);
     font-weight: 600;
+    font-size: 18px;
+}
+
+.biography-content .title {
+    font-weight: 500;
+    color: var(--color-white);
+}
+
+@media (min-width: 768px) {
+    .biography-content {
+        flex-direction: row;
+        justify-content: center;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    .bullet {
+        display: none;
+    }
 }
 
 /* --- SEZIONE PROTOTIPI --- */
 .prototipi-container {
-  padding: 64px 0 0;
+    padding: var(--spacing-64) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-64);
 }
 
 .prototipi-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 16px;
-  max-width: calc(680px + 2 * var(--spacing-32));
-  margin: 0 auto;
-  padding: 0 var(--spacing-32) 64px;
+    text-align: center;
+    max-width: calc(680px + 2 * var(--spacing-32));
+    padding: 0 var(--spacing-32);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
 }
 
+.prototipi-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ogni riga = testo a sinistra + immagine a destra, sempre allineati */
+.prototipi-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+}
+
+.prototipi-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    padding: var(--spacing-40) var(--spacing-32);
+}
+
+.prototipi-block > * {
+    max-width: 440px;
+}
 
 .prototipi-media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #F2F4F3;
-  padding: var(--spacing-40) var(--spacing-32);
+    background-color: #F2F4F3;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    order: -1;
+}
+
+.prototipi-media-desktop {
+    padding: 0 var(--spacing-32);
+}
+
+.prototipi-media-mobile {
+    padding: 0 var(--spacing-32);
+    max-height: 520px; /* taglio in basso come nel riferimento */
+}
+
+.prototipi-img-desktop {
+    width: 100%;
+    max-width: 540px;
+    height: auto;
+    display: block;
+}
+
+.prototipi-img-mobile {
+    width: 100%;
+    max-width: 270px;
+    height: auto;
+    display: block;
 }
 
 
-.prototipi-media img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  object-fit: cover; /* Cambiato da contain a cover (o unset se preferisci l'altezza naturale) */
-}
+@media (min-width: 1000px) {
+    .prototipi-row {
+        grid-template-columns: 1fr 1fr;
+    }
 
+    .prototipi-block {
+        padding: var(--spacing-64) var(--spacing-32);
+    }
+
+    .prototipi-media {
+        order: 0; 
+    }
+}
 /* --- CASE STUDY HEADER & SIDEBAR ("IN QUESTA STORIA") --- */
 .case-study-header {
     display: flex;
@@ -881,13 +965,14 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    
 }
 
-/* --- RIVER: blocco con testo e immagine/elenco --------------------------
-   Un solo componente, usato in Struttura e Interazioni.
-   Sotto i 1000px: una colonna, con immagine/elenco PRIMA del testo.
-   Da 1000px: due colonne, testo a sinistra e immagine/elenco a destra.
-   Per cambiare la proporzione delle colonne: --river-columns.            */
+.interazioni-header .eyebrow-cursor rect {
+    fill: #5FED83 !important; 
+}
+
+
 .title-river {
     font-size: 32px;
     line-height: 1.25;
@@ -910,7 +995,7 @@ body {
 }
 
 .river-media {
-    order: -1; /* sotto 1000px l'immagine/elenco sta sopra il testo */
+    order: -1;
 }
 
 .river-media img {
@@ -1122,7 +1207,13 @@ body {
     border-radius: 6px;
 }
 
-/* --- NUOVO FOOTER --- */
+#EntraNelProgetto .border-inline,
+.section.theme-dark .border-inline {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* --- FOOTER --- */
 .site-footer {
     background-color: #0D110F;
     color: var(--color-muted);
@@ -1150,7 +1241,7 @@ body {
 }
 
 .footer-github-mark {
-    filter: brightness(0) invert(1); /* Rende il logo bianco */
+    filter: brightness(0) invert(1); 
 }
 
 .footer-right {
@@ -1201,7 +1292,7 @@ body {
     font-size: 13px;
 }
 
-/* --- CASE STUDY & BREAKOUT TABS (CON REGOLE HOVER E MOBILE ACCORDION) --- */
+/* --- CASE STUDY & BREAKOUT TABS --- */
 .case-study-container {
     padding: var(--spacing-64) var(--spacing-32);
 }
@@ -1243,9 +1334,9 @@ body {
     list-style: none;
 }
 
-/* La linea sopra ogni voce è il bordo superiore della voce stessa */
+
 .tab {
-    position: relative; /* serve al pulsante "esteso" da 1000px */
+    position: relative; 
     display: flex;
     flex-direction: column;
     border-top: var(--border-width) solid #E4EBE6;
@@ -1256,7 +1347,6 @@ body {
     border-top-color: var(--color-accent);
 }
 
-/* Un pulsante non eredita font e colore dalla pagina: li chiediamo noi */
 .tab-button {
     display: flex;
     align-items: center;
@@ -1305,8 +1395,7 @@ body {
     line-height: 1.5;
 }
 
-/* --- ACCORDION (sotto i 1000px) ---------------------------------------
-   Le regole valgono solo se lo script ha messo .tabs-ready sul contenitore. */
+/* --- ACCORDION (sotto i 1000px) ----*/
 .tabs-ready .accordion-arrow {
     display: block;
 }
@@ -1319,7 +1408,6 @@ body {
     display: none;
 }
 
-/* --- SCHEDE (da 1000px) ------------------------------------------------ */
 @media (min-width: 1000px) {
     .tabs-container {
         grid-template-columns: repeat(3, 1fr);
@@ -1353,3 +1441,5 @@ body {
         outline-offset: 2px;
     }
 }
+
+

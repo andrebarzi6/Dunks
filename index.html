@@ -46,10 +46,12 @@
     <section class="hero">
       <div class="hero-content container">
         <p class="eyebrow">
-          Andrea Barzaghi · UI/UX Design · 2026
-          <svg class="eyebrow-cursor" width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="8" height="10" fill="#5FED83" />
-          </svg>
+          <span>Andrea Barzaghi · UI/UX Design ·</span>
+          <span class="eyebrow-year-wrap">
+            2026
+            <svg class="eyebrow-cursor" width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="8" height="10" fill="#5FED83" />
+            </svg>
         </p>
         <h1 class="heading heading-size-1">Dunk SB Archive. La collezione più rara e preziosa.</h1>
         <p class="hero-text text text-size-200">
@@ -364,42 +366,54 @@
   </div>
 </section>
 
+
 <!-- SEZIONE PROTOTIPI -->
-    <section id="prototipi" class="section theme-light border-top">
-      <div class="container border-inline prototipi-container">
-        
-        <div class="prototipi-header">
-          <div class="eyebrow">
-            PROTOTIPI
-            <svg class="eyebrow-cursor" width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="8" height="10" fill="var(--color-cursor)" />
-            </svg>
-          </div>
+<section id="prototipi" class="section theme-light border-top">
+  <div class="container border-inline prototipi-container">
 
-          <h2 class="heading heading-size-2-regular">Portare le scelte su desktop e mobile</h2>
-      <p class="text-big color-muted">La presentazione raccoglie due prototipi. Le schermate permettono di osservare come cambiano proporzioni, immagini e disposizione dei contenuti quando lo spazio si restringe.</p>
+    <!-- Intestazione centrata -->
+    <div class="prototipi-header">
+      <p class="eyebrow">
+        PROTOTIPI
+        <svg class="eyebrow-cursor" width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="8" height="10" fill="var(--color-cursor)" />
+        </svg>
+      </p>
+      <h2 class="heading heading-size-2-regular">Portare le scelte su desktop e mobile</h2>
+      <p class="text-big color-muted">
+        La presentazione raccoglie due prototipi. Le schermate permettono di osservare come cambiano proporzioni, immagini e disposizione dei contenuti quando lo spazio si restringe.
+      </p>
     </div>
 
-    <div class="river">
-      <div class="river-text">
-        <h3 class="title-river">Desktop: alternare panoramica e dettaglio</h3>
-        <p class="body color-muted">Nel formato ampio affianco fotografie, titoli e spiegazioni. Le immagini occupano porzioni diverse della pagina, mentre le linee rosse accompagnano il passaggio tra i contenuti. Questo estratto mostra la sezione sulla storia del modello.</p>
-      </div>
-      <div class="river-media prototipi-media">
-        <img src="assets/images/poster.png" alt="Prototipo desktop: The story of the Nike Dunk" />
-      </div>
-    </div>
+    <div class="prototipi-grid">
 
-    <div class="river">
-      <div class="river-text">
-        <h3 class="title-river">Mobile: ricomporre in verticale</h3>
-        <p class="body color-muted">Nel formato stretto mantengo la sequenza della pagina e ricompongo immagini e testi in verticale. L'estratto sui materiali mostra come il dettaglio della scarpa e la descrizione trovano posto nel formato mobile.</p>
+      <!-- Riga 1: testo desktop + immagine desktop -->
+      <div class="prototipi-row">
+        <div class="prototipi-block">
+          <h3 class="heading-size-3">Desktop: alternare panoramica e dettaglio</h3>
+          <p class="body color-muted">
+            Nel formato ampio affianco fotografie, titoli e spiegazioni. Le immagini occupano porzioni diverse della pagina, mentre le linee rosse accompagnano il passaggio tra i contenuti. Questo estratto mostra la sezione sulla storia del modello.
+          </p>
+        </div>
+        <div class="prototipi-media prototipi-media-desktop">
+          <img src="assets/images/poster.png" alt="Prototipo desktop" class="prototipi-img-desktop" />
+        </div>
       </div>
-      <div class="river-media prototipi-media">
-        <img src="assets/images/suole.png" alt="Prototipo mobile: Materiali e Grip" />
-      </div>
-    </div>
 
+      <!-- Riga 2: testo mobile + immagine mobile -->
+      <div class="prototipi-row">
+        <div class="prototipi-block">
+          <h3 class="heading-size-3">Mobile: ricomporre in verticale</h3>
+          <p class="body color-muted">
+            Nel formato stretto mantengo la sequenza della pagina e ricompongo immagini e testi in verticale. L'estratto sui materiali mostra come il dettaglio della scarpa e la descrizione trovano posto nel formato mobile.
+          </p>
+        </div>
+        <div class="prototipi-media prototipi-media-mobile">
+          <img src="assets/images/suole.png" alt="Prototipo mobile" class="prototipi-img-mobile" />
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -490,7 +504,7 @@
     </section>
 
     <!-- SEZIONE CTA: ENTRA NEL PROGETTO -->
-    <section id="elaborati" class="cta-section theme-light border-top">
+    <section id="EntraNelProgetto" class="cta-section theme-light border-top">
       <div class="container border-inline cta-container">
         <h2 class="cta-title">Entra nel progetto</h2>
         <p class="cta-description">
