@@ -9,6 +9,8 @@ img {
     max-width: 100%;
 }
 
+html { scroll-behavior: smooth; }
+
 @font-face {
   font-family: "Mona Sans";
   src: url("assets/fonts/mona-sans.woff2") format("woff2");

@@ -114,3 +114,4 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialIndex = [...tabs].findIndex((tab) => tab.classList.contains('is-selected'));
   selectTab(initialIndex === -1 ? 0 : initialIndex);
 });
+
